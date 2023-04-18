@@ -64,7 +64,7 @@ export default {
   },
 
   mounted() {
-    this.fetchPokemons();
+    this.fetchPokemons()
   },
 };
 </script>
