@@ -1,7 +1,7 @@
 <template>
   <div id="card-details">
     <h2>Detalhes do Pokémon</h2>
-    <div v-if="!pokemon.id">Não foi possível encontrar o Pokémon.</div>
+    <div class="pokemon-undefined" v-if="!pokemon.id">Não foi possível encontrar o Pokémon.</div>
     <div v-else>
       <img
         v-if="pokemon.sprites"
@@ -30,6 +30,7 @@
     </div>
   </div>
 </template>
+
 <script>
 export default {
   name: "PokemonDetails",
@@ -39,12 +40,25 @@ export default {
     };
   },
   methods: {
-    async fetchPokemonDetails() {
-      const api = await fetch(`https://pokeapi.co/api/v2/pokemon/25 `);
-      const data = await api.json();
+    async fetchPokemonDetails(pokemonId) {
+      try {
+        const api = await fetch(
+          `https://pokeapi.co/api/v2/pokemon/${pokemonId}`
+        );
+        const data = await api.json();
 
-      this.pokemon = data;
-      console.log(data);
+        this.pokemon = {
+          id: data.id,
+          name: data.name,
+          sprites: data.sprites,
+          height: data.height,
+          weight: data.weight,
+          types: data.types,
+          stats: data.stats,
+        };
+      } catch (error) {
+        console.error(error);
+      }
     },
   },
   created() {
@@ -76,5 +90,12 @@ h2 {
   color: #333;
   text-decoration: underline;
   text-decoration-color: #b93030;
+}
+
+.pokemon-undefined {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+  text-align: center;
 }
 </style>
