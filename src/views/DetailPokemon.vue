@@ -1,7 +1,7 @@
 <template>
   <div id="card-details">
     <h2>Detalhes do Pokémon</h2>
-    <div v-if="!pokemon.id">Não foi possível encontrar o Pokémon.</div>
+    <div class="pokemon-undefined" v-if="!pokemon.id">Não foi possível encontrar o Pokémon.</div>
     <div v-else>
       <img
         v-if="pokemon.sprites"
@@ -90,5 +90,12 @@ h2 {
   color: #333;
   text-decoration: underline;
   text-decoration-color: #b93030;
+}
+
+.pokemon-undefined {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+  text-align: center;
 }
 </style>
