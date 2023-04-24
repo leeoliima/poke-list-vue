@@ -12,11 +12,8 @@ cd dist
 
 git init
 git add -A
-git commit -m 'deploy'
+git commit -m 'new deploy'
 
-git push -f git@github.com:leeoliima/poke-list.git master:gh-pages
-
-
-
+git push -f git@github.com:leeoliima/poke-list-vue.git master:gh-pages
 
 cd -
