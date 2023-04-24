@@ -27,7 +27,7 @@ export default {
 
 #navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   background: #333;
   color: whitesmoke;
